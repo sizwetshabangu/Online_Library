@@ -41,7 +41,7 @@ public class StaffController {
     }
 
     @DeleteMapping("{id}")
-    public ResponseEntity<?> delete(@PathVariable UUID id) {
+    public ResponseEntity<?> remove(@PathVariable UUID id) {
         this.StaffService.remove(id);
         return ResponseEntity.status(HttpStatus.OK).build();
     }
