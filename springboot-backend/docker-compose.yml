@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:latest
+    container_name: sqlserver
+    environment:
+      SA_PASSWORD: ${SPRING_DATASOURCE_PASSWORD}
+      ACCEPT_EULA: "Y"
+      MSSQL_DB: ${SPRING_DATASOURCE_DATABASE}
+    ports:
+      - "5434:1433"
+    volumes:
+      - ./data:/var/opt/mssql/data

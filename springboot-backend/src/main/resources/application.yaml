@@ -1,0 +1,46 @@
+#configuration of spring on local machine
+spring:
+  application:
+    name: springboot-backend
+
+  profiles:
+    include: local
+
+  datasource:
+    url: jdbc:sqlserver://${SPRING_DATASOURCE_HOST}:${SPRING_DATASOURCE_PORT};databaseName=${SPRING_DATASOURCE_DATABASE}
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+
+  docker:
+    compose:
+      enabled: true
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+logging:
+  level:
+    root: error
+    org.springframework: info
+
+---
+#configuration for spring on production
+spring:
+  application:
+    name: SpringBoot-Backend
+
+  profiles:
+    include: production
+
+  datasource:
+    url: jdbc:sqlserver://${SPRING_DATASOURCE_HOST}:${SPRING_DATASOURCE_PORT};databaseName=${SPRING_DATASOURCE_DATABASE}
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+
+logging:
+  level:
+    root: info
+    org.springframework: info
